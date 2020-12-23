@@ -6,14 +6,16 @@ The files in this repository were used to configure the network depicted below.
 
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the __yml__ file (playbook) may be used to install only certain pieces of it, such as Filebeat.
 
-Playbooks to install/deploy Web servers
-  - __TODO:__ - [Install DVWA on the Web Servers](Files/my_playbook.yml).
-  - __TODO:__ - [Install ELK on the Web servers](Files/install-elk.yml).
+Playbooks to install/deploy on Web servers
+  - __TODO:__ - [Install DVWA on Web Servers](Files/my_playbook.yml).
+  - __TODO:__ - [Configuration files for Filebeat](Files/filebeat-configuration.yml).
+  - __TODO:__ - [Configuration files for Metricbeat](Files/metricbeat-configuration.yml).
+  - __TODO:__ - [Install Filebeat on Web Servers](Files/filebeat-playbook.yml).
+  - __TODO:__ - [Install Metricbeat on Web Servers](Files/metricbeat-playbook.yml).
   - __TODO:__ - [To start Beat services](Files/start-beatservices-playbook.yml).
 
-Playbooks to install ELK servers
-  - __TODO:__ - [Install Filebeat](Files/filebeat-playbook.yml).
-  - __TODO:__ - [Install Metricbeat](Files/metricbeat-playbook.yml).
+Playbooks to install on ELK servers
+  - __TODO:__ - [Install ELK on the ELK servers](Files/install-elk.yml).
 
 This document contains the following details:
 - Description of the Topology
@@ -28,7 +30,7 @@ This document contains the following details:
 
 The main purpose of this network is to expose a load-balanced and monitored instance of DVWA (D*mn Vulnerable Web Application).
 
-Load balancing ensures that the application will be highly __availability__, in addition to restricting __the data to avoid overflowing__ the network.
+Load balancing ensures that the application will be in high __availability__, in addition to restricting __the data avoiding to overflow__ the network.
 
 - __TODO:__ _What aspect of security do load balancers protect? A load balancer ensures no single server has to handle too much traffic._
 
@@ -54,59 +56,44 @@ The configuration details of each machine may be found below.
 The machines on the internal network are not exposed to the public Internet. 
 
 Only the __MACA_Jump_Box_Provisioner__ machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
+
 - __TODO:__ _Whitelisted IP addresses  99.225.30.203_
 
 Machines within the network can only be accessed by __SSH connection from the Ansible Provisioner VM to be configured__.
 
-- __TODO:__ _Which machine did you allow to access your ELK VM? What was its IP address? To configure the ELK server (10.1.0.4) the access is only from the  jumpbox with private IP 10.0.0.4. To analyse the logs/metrics the access is only TCP connection from my workstation with my public IP to ELK public IP (104.42.60.40)_
+- __TODO:__ _Which machine did you allow to access your ELK VM? What was its IP address? In order to configure ELK server (10.1.0.4) the access is only from the jumpbox server using  private IP 10.0.0.4. To analyse the logs/metrics the access is only with TCP connection from my workstation with my public IP to ELK public IP (104.42.60.40)_
 
 
 A summary of the access policies in place can be found in the table below.
 
 __TODO__
-
-| Name     | Publicly Accessible | Allowed IP Addresses    |
-|----------|-------------------|---------------------------|
-| Jump Box | Yes               | 99.225.30.203             |
-| ELK      | Yes               | 99.225.30.203, 10.0.0.4   |
-| Web1     | No                | 52.188.19.7, 10.0.0.4     |
-| Web2     | No                | 52.188.19.7, 10.0.0.4     |
+| Name     | Publicly Accessible| Allowed IP Addresses      |
+|----------|--------------------|---------------------------|
+| Jump Box | Yes                | 99.225.30.203             |
+| ELK      | Yes                | 99.225.30.203, 10.0.0.4   |
+| Web1     | No                 | 52.188.19.7, 10.0.0.4     |
+| Web2     | No                 | 52.188.19.7, 10.0.0.4     |
 
 
 ### Elk Configuration
 
 Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because...
-- __TODO:__ _What is the main advantage of automating configuration with Ansible? Now we can install and configure everything at once and in all the containers using Ansible, before each task had to be done manually and on each virtual machine, spending more time, resources and high probability of human error._
+
+- __TODO:__ _What is the main advantage of automating configuration with Ansible? Now we can install and configure everything at once and in all the serves (containers) using Ansible, before this technology, each task had to be done manually on each virtual machine, spending not only more time and resources but with highly probability of human error._
 
 The playbook implements the following tasks:
-- __TODO:__ _In 3-5 bullets, explain the steps of the ELK installation play. E.g., install Docker; download image; etc._
+- __TODO:__ _Steps of the ELK installation play. E.g., install Docker; download image; etc._
 
-  * Install docker.io, it use update-cache=yes because is used to download and install docker.io this is the equivalent of running _apt update_
-  * Install python3-pip, it will install python 3 and will default to p3p.
-  * Install Docker module, docker will be installed so Ansible can utilize that module to control docker containers 
-  * Increase virtual memory, it used to increase the memory that is a requirement of ELK.
-  * Use more memory
+  * Install docker.io, it uses _update-cache=yes_ because is necesary to download and install _docker.io_, this is the equivalent of running _apt update_
+  * Install python3-pip, it will install python version 3 and will default to p3p.
+  * Install Docker module, docker will be installed so Ansible can utilize that module to control docker containers.
+  * Increase virtual memory, it is used to increase the memory that is a requirement for ELK.
+  * Use more memory, it will use the memory configured to be used by ELK.
   * Download and launch a docker elk container, it will donwload the image of ELK container under specific ports.
 
 
 
-
-  * Install docker.io
-    * The steps used for this task are: update_cache=yes, force_apt_get, name=docker.io, state=present, it 
-  * Install python3-pip
-    * The steps are: force_apt_get=yes, namepython3-pip, state=present
-  * Install Docker module
-    * The steps are: name, state
-  * Increase virtual memory
-    * The steps are: command
-  * Use more memory
-      * The steps are: name, value, state, reload
-  * Download and launch a docker elk container
-    * The steps are: name, image, state, restart_policy, published_ports
-
-
-
-The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
+The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance (it should run with _sudo_).
 
 ![TODO: Path with the name of my screenshot of docker ps output](Images/Week13Class1-ScreenShoot-DockerPS.jpg)
 
@@ -116,45 +103,53 @@ This ELK server is configured to monitor the following machines:
 - _`MACA_Web-1` (10.0.0.5)_
 - _`MACA_Web-2` (10.0.0.7)_
 
+
+**Beats Installed**
+
+Generally, the beats family are open-source lightweight data shippers that are installed as `agents` on the servers to send operational data to Elasticsearch. Beats can send data directly to Elasticsearch. The beats Family consists of Filebeat, Metricbeat, Packetbeat, Winlogbeat, Auditbeat, Journalbeat, Heartbeat and Functionbeat.
+
 We have installed the following Beats on these machines:
 - __TODO:__ 
 - _`FileBeat`_
 - _`Metricbeat`_
 
 These Beats allow us to collect the following information from each machine:
-- __TODO:***__ _In 1-2 sentences, explain what kind of data each beat collects, and provide 1 example of what you expect to see. E.g., `Winlogbeat` collects Windows logs, which we use to track user logon events, etc._
 
-- `SSH Login` collect data of all attempted connections using SSH procotol, we can track any access successed or failed to the system.
+- __TODO__ _FileBeat_ is designed to ship log files, and helps to keep things simple by offering a lightweight way (low memory footprint) to forward and centralize logs and files.
+
+- __TODO__ _MetricBeat_ ships host metrics, it is a lightweight agent installed on target servers to periodically collect metric data from the target servers, this could be operating system metrics such as CPU or memory or data related to services running on the server. It can also be used to monitor other beats and ELK stack itself..
 
 ### Using the Playbook
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
 
 __TODO__
-
 SSH into the control node and follow the steps below:
-- Copy the __filebeat-playbook.yml__ file to __/etc/ansible/files__.
-- Update the __host__ file to include __the IPs of the Web Servers including the instrucion _'ansible_python_interpreter=/usr/bin/python3'_ to configure the correct python verion, also update the 'ansible.cfg' file to add the remote_user configured in the VM__
+- Copy the __filebeat-playbook.yml__ file to __/etc/ansible/roles__.
+- Update the __hosts__ file to include __the IPs of the Web Servers including the instruction _'ansible_python_interpreter=/usr/bin/python3'_ to configure the correct version of python, also update the 'ansible.cfg' file to add the remote_user configured in the VM__
 - Run the playbook, and navigate to __http://<ELK-Public-IP>:5601/app/kibana__ to check that the installation worked as expected.
 
-__TODO:__ _Answer the following questions_
-- _Which file is the playbook?_
+__TODO:__ _Answering the following questions with more detail_
+- _Which file is the playbook?_  
   __filebeat-playbook.yml__ 
-- _Where do you copy it?_
-  __It is copied /etc/ansible/files__
-- _Which file do you update to make Ansible run the playbook on a specific machine?_
+
+- _Where do you copy it?_  
+  __It is copied to /etc/ansible/roles, the folder 'roles' was created to have more organization of the yml files created__
+
+- _Which file do you update to make Ansible run the playbook on a specific machine?_  
   __The _host_ file.__
-- _How do I specify which machine to install the ELK server on versus which to install Filebeat on?_
-  __Updating the 'host' file with the creation of groups, each host group will have only the IP addressess that I need to install and updating header on the yml file under the section 'hosts' with the correct host group that will contains the IP group where will be run the playbook__
-- _Which URL do you navigate to in order to check that the ELK server is running?_
-  __http://104.42.60.40:5601/app/kibana (This is the public IP address of the ELK server)__
+
+- _How do I specify which machine to install the ELK server on versus which to install Filebeat on?_  
+  __Updating the 'hosts' file with the creation of groups, each host group will have only the IP addressess that are requiered to install, and updating the header on the yml file under the section 'hosts' with the correct host group that will contains the IP group where will run the playbook__
+- _Which URL do you navigate to in order to check that the ELK server is running?_  
+  __http://104.42.60.40:5601/app/kibana (This is the public IP address asigned to ELK server)__
 
 _As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
 
-The next are the steps to install ELK, but first we just need to be sure of:
+The next are the steps to install ELK, but (at least for this project) first we just need to be sure of:
 - A New Vitual Network is created with a Peer connection between both Virtual Networks.
 - Created a Virtual Machine with at least 4GB of RAM and public IP, also copied from the ansible container the SSH key and added to the new VM as SSH public Key.
 
-Once the previous steps are done, follow the next to install:
+Once the previous steps are done, follow the next to install ELK:
 
 1. Add the new VM to the Ansible 'hosts' file (create a new host group with this new IP)
 2. Create a new Ansible playbook for the new ELK VM, use the same uer configured in the new virtual machine.
@@ -207,7 +202,7 @@ Once the previous steps are done, follow the next to install:
     state: present
 ```
 
-7.  Once the docker is configured to be installed, configure the playbook to download _sebp/el:761_ container with the next ports:
+7.  Once the docker is configured to be installed, configure the playbook to download _sebp/el:761_ image container with ports:
 
 ```
 - name: download and launch a docker elk container
@@ -238,14 +233,16 @@ sysadmin@MACA_VM-ELK:~$sudo docker ps
     http://[your.VM.IP]:5601/app/kibana
 
 
+![TODO: Kibana successfully Access](Images/Week13Class1-ScreenShoot-KibanaAccess.jpg)
 
-Once the ELK server is installed, then we ned to install the _beats_
+
+Once the ELK server is installed, then we need to install _beats_
 
 12. To install _filebeat_, we just need to follow the steps that are already on kibana, the next PDF, contains the steps that we can find there:
 
     [TODO: File with the steps to install filebeat](Files/TutorialKibanaSystemLogs.pdf)
 
-- The changes to be done on this file:
+- The changes to be done are:
 
   Edit the file to include the ELK server's IP address.
 ```bash
@@ -253,23 +250,28 @@ output.elasticsearch:
 hosts: ["10.1.0.4:9200"]
 username: "elastic"
 password: "changeme"
+..
 ...
+..
 setup.kibana:
 host: "10.1.0.4:5601"
 ```
 
-  Save this file in  `/etc/ansible/files/filebeat-config.yml`.
+  Save this file in  `/etc/ansible/files/filebeat-configuration.yml`.
 
-  __TODO:__ - [Install Filebeat file](Files/install-filebeat.yml).
+  __TODO:__ - [Install Filebeat file](Files/filebeat-configuration.yml).
+  __TODO:__ - [Install Filebeat file](Files/filebeat-playbook.yml).
 
 ![TODO: ELK stack successfully receiving logs for Filebeat](Images/Week13Class2-ScreenShoot-KibanaLogsFilebeat.jpg)
 
 
 
-13. To install _metricbeat_, the steps are similar to the previos instalation, follow the steps that are already on kibana, the next PDF, contains the steps that we can find there:
+13. To install _metricbeat_, the steps are similar to the previos instalation, just follow the steps that are already on kibana, the next PDF, contains the steps that we can find there:
 
 
     [__TODO:__ File with the steps to install filebeat](Files/TutorialKibanaDockerMetrics.pdf)
+
+  Save the file configuration in  `/etc/ansible/files/metricbeat-configuration.yml`.
 
     [__TODO:__ Install Metricbeat](Files/metricbeat-configuration.yml).
 
@@ -278,3 +280,5 @@ host: "10.1.0.4:5601"
 __TODO:__ ![ELK stack successfully receiving logs for Metricbeat](Images/Week13Class2-ScreenShoot-KibanaLogsMetricbeat.jpg)
 
 
+Done!
+__MACA__
