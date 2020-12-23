@@ -96,7 +96,9 @@ The playbook implements the following tasks:
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance (it should run with _sudo_).
 
-![<TODO> Path with the name of my screenshot of docker ps output](Images/Week13Class1-ScreenShoot-DockerPS.jpg)
+<TODO>
+
+![Path with the name of my screenshot of docker ps output](Images/Week13Class1-ScreenShoot-DockerPS.jpg)
 
 
 ### Target Machines & Beats
@@ -235,15 +237,18 @@ sysadmin@MACA_VM-ELK:~$sudo docker ps
 11. Verify ELK stack from  the browser
     http://[your.VM.IP]:5601/app/kibana
 
+<TODO>
 
-![<TODO> Kibana successfully Access](Images/Week13Class1-ScreenShoot-KibanaAccess.jpg)
+![Kibana successfully Access](Images/Week13Class1-ScreenShoot-KibanaAccess.jpg)
 
 
 Once the ELK server is installed, then we need to install _beats_
 
 12. To install _filebeat_, we just need to follow the steps that are already on kibana, the next PDF, contains the steps that we can find there:
 
-    [<TODO> File with the steps to install filebeat](Files/TutorialKibanaSystemLogs.pdf)
+<TODO>
+
+  [File with the steps to install filebeat](Files/TutorialKibanaSystemLogs.pdf)
 
 - The changes to be done are:
 
@@ -265,14 +270,16 @@ host: "10.1.0.4:5601"
   - <TODO> [Configuration Filebeat file](Files/filebeat-configuration.yml).
   - <TODO> [Install Playbook Filebeat file](Files/filebeat-playbook.yml).
 
-![<TODO> ELK stack successfully receiving logs for Filebeat](Images/Week13Class2-ScreenShoot-KibanaLogsFilebeat.jpg)
+<TODO>
+
+![ELK stack successfully receiving logs for Filebeat](Images/Week13Class2-ScreenShoot-KibanaLogsFilebeat.jpg)
 
 
 
 13. To install _metricbeat_, the steps are similar to the previos instalation, just follow the steps that are already on kibana, the next PDF, contains the steps that we can find there:
+<TODO>
 
-
-    [<TODO> File with the steps to install filebeat](Files/TutorialKibanaDockerMetrics.pdf)
+  [File with the steps to install filebeat](Files/TutorialKibanaDockerMetrics.pdf)
 
   Save the file configuration in  `/etc/ansible/files/metricbeat-configuration.yml`.
 
