@@ -98,6 +98,7 @@ The following screenshot displays the result of running `docker ps` after succes
 
 ![<TODO> Path with the name of my screenshot of docker ps output](Images/Week13Class1-ScreenShoot-DockerPS.jpg)
 
+
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
 <TODO>
