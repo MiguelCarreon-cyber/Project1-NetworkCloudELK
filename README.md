@@ -4,20 +4,20 @@ The files in this repository were used to configure the network depicted below.
 
 <TODO>
 
-![Path with the name of my diagram](Images/MiguelCarreon_AzureArch-withELKnRules.jpg)
+![Path with the name of my diagram](Resources/Images/MiguelCarreon_AzureArch-withELKnRules.jpg)
 
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the __yml__ file (playbook) may be used to install only certain pieces of it, such as Filebeat.
 
 Playbooks to install/deploy on Web servers
-  - <TODO> [Install DVWA on Web Servers](Files/my_playbook.yml).
-  - <TODO> [Configuration files for Filebeat](Files/filebeat-configuration.yml).
-  - <TODO> [Configuration files for Metricbeat](Files/metricbeat-configuration.yml).
-  - <TODO> [Install Filebeat on Web Servers](Files/filebeat-playbook.yml).
-  - <TODO> [Install Metricbeat on Web Servers](Files/metricbeat-playbook.yml).
-  - <TODO> [To start Beat services](Files/start-beatservices-playbook.yml).
+  - <TODO> [Install DVWA on Web Servers](Resources/Files/my_playbook.yml).
+  - <TODO> [Configuration files for Filebeat](Resources/Files/filebeat-configuration.yml).
+  - <TODO> [Configuration files for Metricbeat](Resources/Files/metricbeat-configuration.yml).
+  - <TODO> [Install Filebeat on Web Servers](Resources/Files/filebeat-playbook.yml).
+  - <TODO> [Install Metricbeat on Web Servers](Resources/Files/metricbeat-playbook.yml).
+  - <TODO> [To start Beat services](Resources/Files/start-beatservices-playbook.yml).
 
 Playbooks to install on ELK servers
-  - <TODO> [Install ELK on the ELK servers](Files/install-elk.yml).
+  - <TODO> [Install ELK on the ELK servers](Resources/Files/install-elk.yml).
 
 This document contains the following details:
 - Description of the Topology
@@ -100,7 +100,7 @@ The following screenshot displays the result of running `docker ps` after succes
 
 <TODO>
 
-![Path with the name of my screenshot of docker ps output](Images/Week13Class1-ScreenShoot-DockerPS.jpg)
+![Path with the name of my screenshot of docker ps output](Resources/Images/Week13Class1-ScreenShoot-DockerPS.jpg)
 
 
 ### Target Machines & Beats
@@ -241,7 +241,7 @@ sysadmin@MACA_VM-ELK:~$sudo docker ps
 
 <TODO>
 
-![Kibana successfully Access](Images/Week13Class1-ScreenShoot-KibanaAccess.jpg)
+![Kibana successfully Access](Resources/Images/Week13Class1-ScreenShoot-KibanaAccess.jpg)
 
 
 Once the ELK server is installed, then we need to install _beats_
@@ -250,7 +250,7 @@ Once the ELK server is installed, then we need to install _beats_
 
 <TODO>
 
-  [File with the steps to install filebeat](Files/TutorialKibanaSystemLogs.pdf)
+  [File with the steps to install filebeat](Resources/Files/TutorialKibanaSystemLogs.pdf)
 
 - The changes to be done are:
 
@@ -269,27 +269,27 @@ host: "10.1.0.4:5601"
 
   Save this file in  `/etc/ansible/files/filebeat-configuration.yml`.
 
-  - <TODO> [Configuration Filebeat file](Files/filebeat-configuration.yml).
-  - <TODO> [Install Playbook Filebeat file](Files/filebeat-playbook.yml).
+  - <TODO> [Configuration Filebeat file](Resources/Files/filebeat-configuration.yml).
+  - <TODO> [Install Playbook Filebeat file](Resources/Files/filebeat-playbook.yml).
 
 <TODO>
 
-![ELK stack successfully receiving logs for Filebeat](Images/Week13Class2-ScreenShoot-KibanaLogsFilebeat.jpg)
+![ELK stack successfully receiving logs for Filebeat](Resources/Images/Week13Class2-ScreenShoot-KibanaLogsFilebeat.jpg)
 
 
 
 13. To install _metricbeat_, the steps are similar to the previos instalation, just follow the steps that are already on kibana, the next PDF, contains the steps that we can find there:
 <TODO>
 
-  [File with the steps to install filebeat](Files/TutorialKibanaDockerMetrics.pdf)
+  [File with the steps to install filebeat](Resources/Files/TutorialKibanaDockerMetrics.pdf)
 
   Save the file configuration in  `/etc/ansible/files/metricbeat-configuration.yml`.
 
-<TODO> [Configuration Metricbeat file](Files/metricbeat-configuration.yml).
+<TODO> [Configuration Metricbeat file](Resources/Files/metricbeat-configuration.yml).
 
-<TODO> [Install Playbook Metricbeat file](Files/metricbeat-playbook.yml).
+<TODO> [Install Playbook Metricbeat file](Resources/Files/metricbeat-playbook.yml).
 
-<TODO> ![ELK stack successfully receiving logs for Metricbeat](Images/Week13Class2-ScreenShoot-KibanaLogsMetricbeat.jpg)
+<TODO> ![ELK stack successfully receiving logs for Metricbeat](Resources/Images/Week13Class2-ScreenShoot-KibanaLogsMetricbeat.jpg)
 
 
 Done!
