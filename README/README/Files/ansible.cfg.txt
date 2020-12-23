@@ -1,0 +1,10 @@
+.
+..
+...
+# default user to use for playbooks if user is not specified
+# (/usr/bin/ansible will use current user as default)
+# MACA-Uncomemnted and chnaged user 'root' by 'sysadmin'
+remote_user = sysadmin
+...
+..
+.
