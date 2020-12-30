@@ -53,6 +53,7 @@ The configuration details of each machine may be found below.
 | MACA_Web-2            | Client VM    | 10.0.0.7   | Linux 18.04 LTS  |
 | MACA_VM-ELK           | IPS          | 10.1.0.4 (104.4260.40)  | Linux 18.04 LTS  |
 
+<BR></BR>
 ### Access Policies
 
 The machines on the internal network are not exposed to the public Internet. 
@@ -63,7 +64,7 @@ Only the __MACA_Jump_Box_Provisioner__ machine can accept connections from the I
 
 Machines within the network can only be accessed by __SSH connection from the Ansible Provisioner VM to be configured__.
 
-- <TODO> _Which machine did you allow to access your ELK VM? What was its IP address? In order to configure ELK server (10.1.0.4) the access is only from the jumpbox server using  private IP 10.0.0.4. To analyse the logs/metrics the access is only with TCP connection from my workstation with my public IP to ELK public IP (104.42.60.40)_
+- <TODO> _Which machine is allowed to access the ELK VM? What was its IP address? In order to configure ELK server (10.1.0.4) the access is only from the jumpbox server using  private IP 10.0.0.4. To analyse the logs/metrics the access is only with TCP connection from my workstation with my public IP to ELK public IP (104.42.60.40)_
 
 
 A summary of the access policies in place can be found in the table below.
@@ -77,6 +78,7 @@ A summary of the access policies in place can be found in the table below.
 | Web1     | No                 | 52.188.19.7, 10.0.0.4     |
 | Web2     | No                 | 52.188.19.7, 10.0.0.4     |
 
+<BR></BR>
 
 ### Elk Configuration
 
@@ -85,7 +87,7 @@ Ansible was used to automate configuration of the ELK machine. No configuration 
 - <TODO> _What is the main advantage of automating configuration with Ansible? Now we can install and configure everything at once and in all the serves (containers) using Ansible, before this technology, each task had to be done manually on each virtual machine, spending not only more time and resources but with highly probability of human error._
 
 The playbook implements the following tasks:
-- <TODO> _Steps of the ELK installation play. E.g., install Docker; download image; etc._
+- <TODO> _Steps of the ELK installation play._
 
   * __Install docker.io,__ it uses _update-cache=yes_ because is necesary to download and install _docker.io_, this is the equivalent of running _apt update_
   * __Install python3-pip,__ it will install python version 3 and will default to p3p.
@@ -103,6 +105,7 @@ The following screenshot displays the result of running `docker ps` after succes
 ![Path with the name of my screenshot of docker ps output](Resources/Images/Week13Class1-ScreenShoot-DockerPS.jpg)
 
 
+<BR></BR>
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
 <TODO>
@@ -125,6 +128,7 @@ These Beats allow us to collect the following information from each machine:
 
 - <TODO> _MetricBeat_ ships host metrics, it is a lightweight agent installed on target servers to periodically collect metric data from the target servers, this could be operating system metrics such as CPU or memory or data related to services running on the server. It can also be used to monitor other beats and ELK stack itself..
 
+<BR></BR>
 ### Using the Playbook
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
 
@@ -139,17 +143,19 @@ SSH into the control node and follow the steps below:
 - _Which file is the playbook?_  
   __filebeat-playbook.yml__ 
 
-- _Where do you copy it?_  
+- _Where it was copied it?_  
   __It is copied to /etc/ansible/roles, the folder 'roles' was created to have more organization of the yml files created__
 
-- _Which file do you update to make Ansible run the playbook on a specific machine?_  
+- _Which file was updated to make Ansible run the playbook on a specific machine?_  
   __The _host_ file.__
 
-- _How do I specify which machine to install the ELK server on versus which to install Filebeat on?_  
+- _How was specified which machine to install the ELK server on versus which to install Filebeat on?_  
   __Updating the 'hosts' file with the creation of groups, each host group will have only the IP addressess that are requiered to install, and updating the header on the yml file under the section 'hosts' with the correct host group that will contains the IP group where will run the playbook__
-- _Which URL do you navigate to in order to check that the ELK server is running?_  
+
+- _Which URL navigate to in order to check that the ELK server is running?_  
   __http://104.42.60.40:5601/app/kibana (This is the public IP address asigned to ELK server)__
 
+<BR></BR>
 _As a **Bonus**, next are the commands the user will need to run to download the playbook, update the files, etc._
 
 The next are the steps to install ELK, but (at least for this project) first we just need to be sure of:
